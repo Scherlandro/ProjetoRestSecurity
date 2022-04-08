@@ -1,0 +1,40 @@
+<h1 *ngIf="!isChange" mat-dialog-title>Adicionar Cliente</h1>
+<h1 *ngIf="isChange" mat-dialog-title>Editar Cliente</h1>
+
+<div mat-dialog-content>
+
+  <mat-form-field appearance="fill">
+    <mat-label>ID</mat-label>
+    <input matInput [(ngModel)]="dataUser.id_usuario">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Nome</mat-label>
+    <input matInput [(ngModel)]="dataUser.nome_usuario">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Email</mat-label>
+    <input matInput [(ngModel)]="dataUser.email">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Senha</mat-label>
+    <input matInput [(ngModel)]="dataUser.senha">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Perfil</mat-label>
+    <input matInput [(ngModel)]="dataUser.perfil">
+  </mat-form-field>
+
+  <span>
+
+  <button mat-raised-button *ngIf="!isChange"  [mat-dialog-close]="dataUser" cdkFocusInitial >Create</button>
+  <button mat-button *ngIf="isChange"  [mat-dialog-close]="dataUser" cdkFocusInitial >Edit</button>
+  <button mat-raised-button (click)="onCancel()">Cancel</button>
+ </span>
+
+
+</div>
+

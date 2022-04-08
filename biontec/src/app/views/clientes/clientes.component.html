@@ -1,0 +1,55 @@
+<body class="mat-body">
+  <div class="row">
+ <mat-form-field appearance="outline">
+<mat-icon >search</mat-icon>
+  <input type="text"
+         placeholder="Digite o Estado"
+         matInput
+         [formControl]="clienteControl"
+         (ngModelChange)="buscar()" />
+  <!--  [(ngModel)]="buscaDigitada" -->
+
+</mat-form-field>
+</div>
+  <button mat-raised-button color="warn" class="notranslate" (click)="openDialogo(clienteControl.value)" >
+    <mat-icon>add</mat-icon>
+    {{ 'Adicionar' }}
+  </button>
+<mat-toolbar color="primary" >
+  <span> Tabela de Clientes </span>
+
+
+</mat-toolbar>
+
+<table mat-table id="tableCliente" [dataSource]="dataSourceCliente$" class="mat-elevation-z8">
+  <ng-container matColumnDef="id_cliente">
+    <th mat-header-cell *matHeaderCellDef> Id </th>
+    <td mat-cell *matCellDef="let element"> {{element.id_cliente}} </td>
+  </ng-container>
+  <ng-container matColumnDef="nome_cliente">
+    <th mat-header-cell *matHeaderCellDef> Nome </th>
+    <td mat-cell *matCellDef="let element"> {{element.nome_cliente}} </td>
+  </ng-container>
+  <ng-container matColumnDef="pessoa">
+    <th mat-header-cell *matHeaderCellDef> Pessoa </th>
+    <td mat-cell *matCellDef="let element"> {{element.pessoa}} </td>
+  </ng-container>
+  <ng-container matColumnDef="estado">
+    <th mat-header-cell *matHeaderCellDef> Estado </th>
+    <td mat-cell *matCellDef="let element"> {{element.estado}} </td>
+  </ng-container>
+  <ng-container matColumnDef="opicoes">
+    <th mat-header-cell *matHeaderCellDef> Opições </th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button (click)="editarElement(element)" >
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button color="warn" (click)="deleteElement(element.id_cliente)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+</body>

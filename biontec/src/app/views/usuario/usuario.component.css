@@ -1,0 +1,28 @@
+body{
+  background-color: darkslategrey;
+}
+table {
+  width: 100%;
+  height: auto;
+  background-color: darkslategrey;
+}
+.loading-spinner{
+  padding: 25px;
+  background: rgba(0,0,0,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.edit{
+  color: lawngreen;
+  padding-right: 18px;
+}
+.delete{
+  color: fuchsia;
+  padding-left: 18px;
+}
+
+.mat-header{
+  width: 8rem;
+}
