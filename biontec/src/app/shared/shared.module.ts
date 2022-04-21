@@ -6,6 +6,7 @@ import { DialogEditorComponent } from './components/dialog-cliente/dialog-editor
 import {A11yModule} from "@angular/cdk/a11y";
 import {FormsModule} from "@angular/forms";
 import { DialogUsuarioComponent } from './components/dialog-usuario/dialog-usuario.component';
+import { DialogLoginComponent } from './components/dialog-login/dialog-login.component';
 
 
 
@@ -13,7 +14,8 @@ import { DialogUsuarioComponent } from './components/dialog-usuario/dialog-usuar
   declarations: [
     ErrorDiologComponent,
     DialogEditorComponent,
-    DialogUsuarioComponent
+    DialogUsuarioComponent,
+    DialogLoginComponent
   ],
   imports: [
     CommonModule,

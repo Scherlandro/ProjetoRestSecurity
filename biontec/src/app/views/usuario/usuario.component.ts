@@ -118,8 +118,8 @@ export class UsuarioComponent implements OnInit  {
     */
   }
 
-  editarElement(eventCli: UsuarioModel_T){
-    this.openDialogo(eventCli);
+  editarElement(event: UsuarioModel_T){
+    this.openDialogo(event);
   }
 
   deleteElement(id: number){

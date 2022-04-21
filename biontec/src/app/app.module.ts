@@ -23,6 +23,7 @@ import {MatPaginatorModule} from "@angular/material/paginator";
 import { ClientesComponent } from './views/clientes/clientes.component';
 import {MatSortModule} from "@angular/material/sort";
 import { EstampadorComponent } from './views/estampador/estampador.component';
+import {MatProgressBarModule} from "@angular/material/progress-bar";
 
 
 @NgModule({
@@ -58,6 +59,7 @@ import { EstampadorComponent } from './views/estampador/estampador.component';
         MatSidenavModule,
         MatPaginatorModule,
         MatSortModule,
+        MatProgressBarModule,
 
     ],
   providers: [],

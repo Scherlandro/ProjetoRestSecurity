@@ -1,3 +1,15 @@
-<p>
- Id: {{id}}
-</p>
+<mat-card class="example-card">
+  <mat-card-subtitle >Usuario dessa sessão</mat-card-subtitle>
+  <mat-card-title>{{inscrito}} </mat-card-title>
+  <mat-card-content>
+    <output> {{anuncio}} </output>
+  </mat-card-content>
+  <mat-divider inset></mat-divider>
+  <mat-card-actions>
+    <button mat-button>LIKE</button>
+    <button mat-button>SHARE</button>
+  </mat-card-actions>
+  <mat-card-footer>
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </mat-card-footer>
+</mat-card>

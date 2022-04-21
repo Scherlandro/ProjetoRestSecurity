@@ -9,18 +9,18 @@ import {Subscription} from "rxjs";
 })
 export class UserDemoComponent implements OnInit {
 
-  id: string = "";
+  inscrito : string = ' ';
+  anuncio : string = "Sessão simples para demonstrativo iniciada com sucesso!" ;
   inscricao: Subscription = new Subscription();
 
   constructor(private route_: ActivatedRoute) {
     //this.id = this.route_.snapshot.params['id'];
-
   }
 
   ngOnInit() {
    this.inscricao = this.route_.params.subscribe(
       (params:any) =>{
-        this.id = params['id'];
+        this.inscrito = params['id'];
       }
     );
   }

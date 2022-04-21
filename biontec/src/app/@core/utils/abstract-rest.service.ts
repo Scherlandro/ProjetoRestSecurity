@@ -6,7 +6,7 @@ import { BehaviorSubject, Observable, of } from 'rxjs';
 import { ReCaptchaV3Service, ScriptService } from 'node_modules/ngx-captcha';
 import { LocalStorageService } from '../local-storage/local-storage.service';
 import { Injector, isDevMode, NgZone } from '@angular/core';
-import { MotivoExecucaoService } from '../../service/motivo-execucao.service';
+//import { MotivoExecucaoService } from '../../service/motivo-execucao.service';
 
 export class AbstractRestService<T> {
   private select = new BehaviorSubject<SelectModel>(new SelectModel());
@@ -14,7 +14,7 @@ export class AbstractRestService<T> {
   protected localStorageService: LocalStorageService;
   protected scriptService: ScriptService;
   protected zone: NgZone;
-  protected motivoExecucaoService: MotivoExecucaoService;
+ // protected motivoExecucaoService: MotivoExecucaoService;
 
   /**
    * @param {HttpClient} _http.
@@ -28,7 +28,7 @@ export class AbstractRestService<T> {
     this.localStorageService = injector.get(LocalStorageService);
     this.zone = injector.get(NgZone);
     this.scriptService = injector.get(ScriptService);
-    this.motivoExecucaoService = injector.get(MotivoExecucaoService);
+   /// this.motivoExecucaoService = injector.get(MotivoExecucaoService);
   }
 
   /**

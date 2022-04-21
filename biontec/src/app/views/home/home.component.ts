@@ -46,14 +46,14 @@ export class HomeComponent implements OnInit, AfterViewInit  {
   constructor(public paisesService: PaisesService) { }
 
   ngOnInit(): void {
-  /*
+
    this.paisesService.getTodosPaises()
       .subscribe((data: any) => {
        this.tbHomeDataSource = new MatTableDataSource(data);
         this.tbHomeDataSource.paginator = this.paginator;
      });
 
-   */
+
   }
 //     https://edupala.com/how-to-implement-angular-material-table-in-angular-12/
 

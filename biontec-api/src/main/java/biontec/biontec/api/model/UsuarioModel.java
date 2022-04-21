@@ -6,6 +6,8 @@ import lombok.Setter;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
+import java.util.Objects;
 
 @Entity(name = "usuarios")
 public class UsuarioModel {
@@ -24,6 +26,18 @@ public class UsuarioModel {
 
     @Column(nullable = false, length = 50)
     private String perfil;
+
+
+    public UsuarioModel() {
+    }
+
+    public UsuarioModel(@NotBlank String nome_usuario,
+                @NotBlank String senha) {
+        this.nome_usuario = nome_usuario;
+        this.senha = senha;
+       // this.loggedIn = false;
+    }
+
 
     public Integer getId_usuario() {
         return id_usuario;
@@ -63,6 +77,15 @@ public class UsuarioModel {
 
     public void setPerfil(String perfil) {
         this.perfil = perfil;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof UsuarioModel)) return false;
+        UsuarioModel user = (UsuarioModel) o;
+        return Objects.equals(nome_usuario, user.nome_usuario) &&
+                Objects.equals(senha, user.senha);
     }
 
 
