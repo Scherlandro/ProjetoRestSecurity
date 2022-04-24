@@ -31,14 +31,13 @@ public class LoginController {
 
     @PutMapping("/login")
     public UsuarioModel login(@RequestBody @Valid LoginDto loginDto) {
-        String nome = "", senha = "";
-        var loginModel = new UsuarioModel(nome,senha);
+        String nome_usuario = "", senha = "";
+        var loginModel = new UsuarioModel(nome_usuario,senha);
         BeanUtils.copyProperties(loginDto, loginModel);
         List<UsuarioModel> listUsers = loginServices.LoginServer();
         for (UsuarioModel other : listUsers) {
             if (other.equals(loginModel)) {
                 return other;
-              // return true;
                 // return ResponseEntity.status(HttpStatus.OK).body("Seja bem vindo");
             }
         }
@@ -46,9 +45,5 @@ public class LoginController {
         //return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Registro não encontrado");
     }
 
-    /*
-    Outro exemplo mais completo
-    https://www.bezkoder.com/spring-boot-login-example-mysql/
-     */
 
     }

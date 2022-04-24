@@ -31,8 +31,8 @@ public class UsuarioModel {
     public UsuarioModel() {
     }
 
-    public UsuarioModel(@NotBlank String nome_usuario,
-                @NotBlank String senha) {
+    public UsuarioModel( String nome_usuario,
+                String senha) {
         this.nome_usuario = nome_usuario;
         this.senha = senha;
        // this.loggedIn = false;
