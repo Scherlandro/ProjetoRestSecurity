@@ -3,15 +3,15 @@
     <div class="col-4">
       <mat-form-field appearance="outline">
         <input   type="text" placeholder="Digite o usuário" matInput
-                 [(ngModel)]="loginModel.nome_usuario" id="usuario"/>
+                 [(ngModel)]="loginModel.nome_usuario" id="usuario" for="usuario"/>
       </mat-form-field>
       <mat-form-field appearance="outline">
         <input  type="password" placeholder="Digite a senha" matInput
-                [(ngModel)]="loginModel.senha" id="senha"/>
+                [(ngModel)]="loginModel.senha" id="senha" for="senha"/>
       </mat-form-field>
       <button mat-raised-button color="primary" class="notranslate" (click)="logar()">
         <mat-icon>input</mat-icon>
-        {{ 'Login' }}
+        {{'Login'}}
       </button>
     </div>
   </div>

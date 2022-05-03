@@ -12,7 +12,7 @@ import {first} from "rxjs/operators";
 })
 export class LoginComponent implements OnInit {
 
-  loginModel: LoginModel_T = new LoginModel_T();
+   loginModel: LoginModel_T = new LoginModel_T();
   loginControl = new FormControl();
 
 
@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
 
   // Login simples
   logar(){
+    console.log(this.loginModel);
     this.authService.fazerLogin(this.loginModel);
   }
 

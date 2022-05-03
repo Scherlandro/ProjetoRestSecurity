@@ -33,10 +33,10 @@ import {Router} from "@angular/router";
 
   private usuarioAutenticado: boolean = false;
 
-  //mostrarMenuEmitter = new EventEmitter<boolean>();
+  mostrarMenuEmitter = new EventEmitter<boolean>();
 
 
-    fazerLogin(user: LoginModel_T): boolean {
+    fazerLogin1(user: LoginModel_T): boolean {
       console.log("ObjetoLogin chegou no service", user)
       if (this._http.put<UsuarioModel_T[]>(this.baseUrl , user)!== null){
         this.router.navigate(['/user-demo/ ' + '' + user.nome_usuario + '']) ;
@@ -57,21 +57,22 @@ import {Router} from "@angular/router";
         }));
     }
 
-  fazerLogin2(usuario: LoginModel_T) {
+  fazerLogin(usuario: LoginModel_T) {
 
-    if (usuario.nome_usuario === 'teste' &&
-      usuario.senha === '123') {
+    if (usuario.nome_usuario === 'Scherlandro' &&
+      usuario.senha === '1') {
 
       this.usuarioAutenticado = true;
 
-     // this.mostrarMenuEmitter.emit(true);
+      this.mostrarMenuEmitter.emit(true);
 
-      this.baseUrl.concat('/');//.navigate(['/']);
+      //this.baseUrl.concat('/');
+      this.router.navigate(['/']);
 
     } else {
       this.usuarioAutenticado = false;
 
-     // this.mostrarMenuEmitter.emit(false);
+      this.mostrarMenuEmitter.emit(false);
     }
   }
 

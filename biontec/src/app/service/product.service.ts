@@ -3,7 +3,6 @@ import {HttpClient} from "@angular/common/http";
 import {ProdutoModel_T} from "../model/produto-model";
 import {Observable, of} from "rxjs/index";
 import {environment} from "../../environments/environment";
-import {UsuarioModel_T} from "../model/usuario-model";
 import {map} from "rxjs/operators";
 
 @Injectable({
@@ -23,9 +22,6 @@ export class ProductService {
     return this._http.get<ProdutoModel_T[]>(this.baseUrl);
   }
 
-  getmostrarTodos(){
-    return this._http.get<ProdutoModel_T[]>(this.baseUrl);
-  }
   getListarTodos(): Observable<any> {
     return this._http.get(this.baseUrl)
       .pipe(map(response => response));

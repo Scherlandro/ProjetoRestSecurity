@@ -1,10 +1,9 @@
 <body class="mat-body">
 <nav class="toolbar" role="banner">
 
-  <li routerLinkActive="active"><a  mat-button=""  routerLink="" >
-    <span class="mat-button-wrapper ">Home</span></a> </li>
+  <form *ngIf="mostrarMenu">
 
-  <a  mat-button=""  routerLink="/page_usuarios" >
+   <a  mat-button=""  routerLink="/page_usuarios" >
     <span class="mat-button-wrapper ">Usuarios</span></a>
 
   <a mat-button="" routerLink="/clientes">
@@ -24,18 +23,21 @@
  <a  mat-button=""  routerLink="/busca" >
     <span class="mat-button-wrapper ">Buscas</span></a>
 
-  <a  mat-button=""  routerLink="/estampadores" >
-    <span class="mat-button-wrapper ">Estampas</span></a>
 
-   <a class="card" target="_blank" rel="noopener" mat-button="" href="http://scherlandro.blogspot.com/" >
+  </form>
+
+  <li routerLinkActive="active"><a  mat-button=""  routerLink="" >
+    <span class="mat-button-wrapper ">Home</span></a> </li>
+
+   <a class="card" target="_blank" rel="noopener" mat-button=""
+      href="http://scherlandro.blogspot.com/" >
     <span class="mat-button-wrapper ">MEU BLOGSPOT</span></a>
 
   <ul ></ul>
 
-  <a  mat-button="" class="mat-focus-indicator docs-navbar-link mat-button "
-      tabindex="10" aria-disabled="false" routerLink="/login" >
-    <span class="mat-button-wrapper">Login</span><span matripple="" class="mat-ripple mat-button-ripple">
-</span><span class="mat-button-focus-overlay"></span></a>
+  <a  mat-button=""  routerLink="/login" >
+    <span class="mat-button-wrapper ">Login</span></a>
+
 
 </nav>
 

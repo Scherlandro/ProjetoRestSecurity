@@ -8,17 +8,21 @@ import {ProductsComponent} from "./views/products/products.component";
 import {CheckoutComponent} from "./views/checkout/checkout.component";
 import {ClientesComponent} from "./views/clientes/clientes.component";
 import {ShoppingCartComponent} from "./views/shopping-cart/shopping-cart.component";
-import {EstampadorComponent} from "./views/estampador/estampador.component";
+import {AuthGuard} from "./guards/auth.guard.ts";
 
 const routes: Routes = [
   {path: '',component: HomeComponent },
-  { path:'page_usuarios', component: UsuarioComponent },
+  { path:'page_usuarios', canActivate:[AuthGuard],
+    component: UsuarioComponent },
   { path:'user-demo/:id', component: UserDemoComponent },
-  {path: 'clientes', component: ClientesComponent},
-  {path: 'produtos', component: ProductsComponent},
-  {path: 'vendas', component: CheckoutComponent},
-  {path: 'busca', component: ShoppingCartComponent },
-  {path: 'estampadores', component: EstampadorComponent },
+  {path: 'clientes', canActivate:[AuthGuard],
+  component: ClientesComponent},
+  {path: 'produtos', canActivate:[AuthGuard],
+    component: ProductsComponent},
+  {path: 'vendas', canActivate:[AuthGuard],
+    component: CheckoutComponent},
+  {path: 'busca', canActivate:[AuthGuard],
+    component: ShoppingCartComponent },
   {path: 'login', component: LoginComponent}
 
 ];
