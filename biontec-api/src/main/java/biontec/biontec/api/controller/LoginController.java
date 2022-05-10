@@ -4,6 +4,7 @@ package biontec.biontec.api.controller;
 import biontec.biontec.api.dtos.LoginDto;
 import biontec.biontec.api.model.UsuarioModel;
 import biontec.biontec.api.services.LoginServices;
+import biontec.biontec.api.services.UsuarioServices;
 import lombok.var;
 import org.aspectj.bridge.Message;
 import org.springframework.beans.BeanUtils;
@@ -23,16 +24,29 @@ import javax.validation.Valid;
 @RequestMapping("/autenticar")
 public class LoginController {
 
-    final LoginServices loginServices;
-
-    public LoginController(LoginServices loginServices) {
-        this.loginServices = loginServices;
+    private UsuarioServices usuarioServices;
+       public LoginController(UsuarioServices usuarioServices) {
+        this.usuarioServices = usuarioServices;
     }
 
-    @PutMapping("/login")
+    @GetMapping(path = "/login")
+    public String login(@RequestBody @Valid UsuarioModel login) {
+        List<UsuarioModel> listUsers = usuarioServices.UsuarioServer();
+        for (UsuarioModel other : listUsers) {
+            if (other.equals(login)) {
+                System.out.println(other);
+                return "page_usuarios";
+            }
+        }
+        return null;
+    }
+
+
+    /*
+    @PostMapping("/login")
     public UsuarioModel login(@RequestBody @Valid LoginDto loginDto) {
         String nome_usuario = "", senha = "";
-        var loginModel = new UsuarioModel(nome_usuario,senha);
+        var loginModel = new UsuarioModel();
         BeanUtils.copyProperties(loginDto, loginModel);
         List<UsuarioModel> listUsers = loginServices.LoginServer();
         for (UsuarioModel other : listUsers) {
@@ -44,6 +58,8 @@ public class LoginController {
         return null;
         //return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Registro não encontrado");
     }
+
+     */
 
 
     }

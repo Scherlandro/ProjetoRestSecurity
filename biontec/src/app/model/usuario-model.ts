@@ -1,9 +1,8 @@
 export interface UsuarioModel_T {
-  id_usuario: number;
-  nome_usuario: string;
-  email: string;
-  senha: string;
-  perfil: string;
+  id: string;
+  name: string;
+  username: string;
+  password: string;
 
 }
 /*

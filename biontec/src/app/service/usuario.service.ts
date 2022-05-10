@@ -63,7 +63,7 @@ export class UsuarioService {
   }
 
   updateUsuario(id: number, user: UsuarioModel_T): Observable<ApiResponse> {
-    return this._http.put<ApiResponse>(this.baseUrl + user.id_usuario, user);
+    return this._http.put<ApiResponse>(this.baseUrl + user.id, user);
   }
 
 
@@ -72,24 +72,6 @@ export class UsuarioService {
     return this._http.get<UsuarioModel_T[]>('${API_PATH} Usuarios').pipe(map((res: any) => res));
   }
 
-  /*
- // https://www.youtube.com/watch?v=76fUSr1nSDM
-  private readonly API_EX = '/assets/usuarios.json';
-  listaTeste(){
-    return this._http.get<UsuarioModel_T[]>(this.API_EX)
-      .pipe(
-        first(),
-        delay(2000),
-       // https://www.youtube.com/watch?v=gi0ZJ8-r6IM
-        tap(DebugarUser => console.log(DebugarUser))
-      );
-  }
-   */
-
-  /*       Gson gson = new Gson();
-           return gson.to
-      https://www.tutorialsteacher.com/typescript/for-loop
-       }*/
 
 
 }

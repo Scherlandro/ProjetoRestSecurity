@@ -18,7 +18,7 @@ export class DialogUsuarioComponent implements OnInit {
 
 
   ngOnInit(): void {
-    if (this.dataUser.id_usuario != null) {
+    if (this.dataUser.id != null) {
       this.isChange = true;
     } else {
       this.isChange = false;

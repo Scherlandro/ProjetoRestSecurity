@@ -14,7 +14,7 @@ import {DialogUsuarioComponent} from "../../shared/components/dialog-usuario/dia
 })
 
 export class UsuarioComponent implements OnInit  {
-  displayedColumns: string[] = ['id_usuario','nome_usuario','email','senha','perfil','opicoes'];
+  displayedColumns: string[] = ['id_usuario','nome_usuario','email','senha','opicoes'];
   tbSourceUsuarios$ = new MatTableDataSource<UsuarioModel_T>();
   usuarioControl = new FormControl();
   usuariosFiltered: UsuarioModel_T[] = [];
@@ -36,7 +36,7 @@ export class UsuarioComponent implements OnInit  {
         this.usuariosFiltered = result;   } );
   }
   changeUsuario(value: any) {
-       this.usuariosFiltered.filter(usuarios => usuarios.id_usuario.toString()
+       this.usuariosFiltered.filter(usuarios => usuarios.id.toString()
         .includes(value.toUpperCase()));
   }
 
@@ -83,17 +83,15 @@ export class UsuarioComponent implements OnInit  {
     const dialogRef = this.dialog.open(DialogUsuarioComponent, {
       width: '300px',
       data: eventUser === null? {
-        id_usuario: null,
-        nome_usuario: '',
-        email: '',
-        senha: '',
-        perfil: ''
+        id: null,
+        name: '',
+        username: '',
+        password: ''
       }: {
-        id_usuario: eventUser.id_usuario,
-        nome_usuario: eventUser.nome_usuario,
-        email: eventUser.email,
-        senha: eventUser.senha,
-        perfil: eventUser.perfil
+        id: eventUser.id,
+        name: eventUser.name,
+        username: eventUser.username,
+        password: eventUser.password
       }
     });
 /*

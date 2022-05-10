@@ -22,11 +22,10 @@ export class LoginComponent implements OnInit {
   returnUrl: string = '';
 
 
-
   // Login simples
   logar(){
     console.log(this.loginModel);
-    this.authService.fazerLogin(this.loginModel);
+      this.authService.fazerLogin(this.loginModel);
   }
 
   //login um pouco avançado

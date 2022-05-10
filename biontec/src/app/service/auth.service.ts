@@ -1,6 +1,6 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import {LoginModel_T} from "../model/login-model";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs/index";
 import {map} from "rxjs/operators";
 import {environment} from "../../environments/environment";
@@ -57,7 +57,42 @@ import {Router} from "@angular/router";
         }));
     }
 
-  fazerLogin(usuario: LoginModel_T) {
+
+    message:any;
+
+    fazerLogin(login: LoginModel_T): any{
+    const headers = new HttpHeaders({Authorization: 'Basic'
+    + btoa(login.nome_usuario + ':' + login.senha)  })
+
+
+     let resp =  this._http.get<LoginModel_T>(this.baseUrl, {
+       headers, responseType: 'text' as 'json'})
+      // .pipe(map((rest:LoginModel_T)=>rest));
+
+      resp.subscribe(data => {
+        this.message = data;
+        console.log(data);
+      });
+
+      if(resp){
+        this.usuarioAutenticado = true;
+
+        this.mostrarMenuEmitter.emit(true);
+
+        //this.baseUrl.concat('/');
+        this.router.navigate(['/']);
+
+      } else {
+        this.usuarioAutenticado = false;
+
+        this.mostrarMenuEmitter.emit(false);
+      }
+
+    }
+
+
+
+  fazerLogin2(usuario: LoginModel_T) {
 
     if (usuario.nome_usuario === 'Scherlandro' &&
       usuario.senha === '1') {

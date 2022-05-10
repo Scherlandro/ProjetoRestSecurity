@@ -12,7 +12,7 @@
                  (keyup)="changeUsuario(usuarioControl)"/>
           <mat-error>Campo Obrigatório não preenchido.</mat-error>
           <mat-autocomplete #auto="matAutocomplete">
-            <mat-option [value]="iUsuario.id_usuario" *ngFor="let iUsuario of usuariosFiltered">{{iUsuario.id_usuario}}</mat-option>
+            <mat-option [value]="iUsuario.id" *ngFor="let iUsuario of usuariosFiltered">{{iUsuario.id}}</mat-option>
           </mat-autocomplete>
 
         </mat-form-field>
@@ -55,26 +55,22 @@
 
        <ng-container matColumnDef="id_usuario">
          <th mat-header-cell *matHeaderCellDef class="mat-header-row" size="50">ID</th>
-          <td mat-cell *matCellDef="let element"> {{element.id_usuario }} </td>
+          <td mat-cell *matCellDef="let element"> {{element.id }} </td>
         </ng-container>
 
         <ng-container matColumnDef="nome_usuario">
           <th mat-header-cell *matHeaderCellDef> Nome </th>
-          <td mat-cell *matCellDef="let element"> {{element.nome_usuario}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
         </ng-container>
 
         <ng-container matColumnDef="email">
           <th mat-header-cell *matHeaderCellDef> Email </th>
-          <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.username}} </td>
         </ng-container>
 
         <ng-container matColumnDef="senha">
           <th mat-header-cell *matHeaderCellDef> Senha </th>
-          <td mat-cell *matCellDef="let element"> {{element.senha}} </td>
-        </ng-container>
-        <ng-container matColumnDef="perfil">
-          <th mat-header-cell *matHeaderCellDef> Perfil </th>
-          <td mat-cell *matCellDef="let element"> {{element.perfil}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.password}} </td>
         </ng-container>
         <ng-container matColumnDef="opicoes">
           <th class="mat-header" mat-header-cell *matHeaderCellDef>Opições </th>
@@ -83,7 +79,7 @@
             <button mat-icon-button (click)="editarElement(element)" >
               <mat-icon>edit</mat-icon>
             </button>
-            <button mat-icon-button color="warn" (click)="deleteElement(element.id_usuario)">
+            <button mat-icon-button color="warn" (click)="deleteElement(element.id)">
               <mat-icon>delete</mat-icon>
             </button>
           </td>

@@ -9,6 +9,7 @@ import javax.validation.constraints.NotEmpty;
 
 public class UsuarioDto {
 
+    /*
     public static UsuarioDto converter(UsuarioModel u) {
         var users = new UsuarioDto();
         users.setNome_usuario(u.getNome_usuario());
@@ -16,6 +17,8 @@ public class UsuarioDto {
         users.setSenha(u.getSenha());
         return users;
     }
+
+     */
 
 
     @NotBlank
