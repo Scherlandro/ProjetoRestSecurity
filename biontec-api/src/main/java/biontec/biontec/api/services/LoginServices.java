@@ -13,11 +13,11 @@ public class LoginServices {
 
 
     public LoginServices(UsuarioRepository loginRepository) {
-
         this.loginRepository = loginRepository;
     }
 
     public List<UsuarioModel> LoginServer(){
+
         return loginRepository.findAll();
     }
 

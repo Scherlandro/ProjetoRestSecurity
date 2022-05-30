@@ -1,8 +1,7 @@
-export interface UsuarioModel_T {
-  id: string;
-  name: string;
-  username: string;
-  password: string;
+export class UsuarioModel_T {
+  id: string = '';
+  username: string = '';
+  password: string = '';
 
 }
 /*

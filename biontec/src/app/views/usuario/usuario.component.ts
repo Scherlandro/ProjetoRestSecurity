@@ -84,12 +84,10 @@ export class UsuarioComponent implements OnInit  {
       width: '300px',
       data: eventUser === null? {
         id: null,
-        name: '',
         username: '',
         password: ''
       }: {
         id: eventUser.id,
-        name: eventUser.name,
         username: eventUser.username,
         password: eventUser.password
       }

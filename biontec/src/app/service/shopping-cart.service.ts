@@ -29,4 +29,15 @@ export class ShoppingCartService {
     this.cartCount$.next(this.total);
   }
 
+/*
+  private getBaseCauculo(cart: any): any {
+    switch (cart) {
+      case this.total:
+        return this.total;
+      case this.cartCount$:
+        return this.cartCount$;
+    }
+  }
+ */
+
 }

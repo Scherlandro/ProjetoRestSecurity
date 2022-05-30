@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {LoginModel_T} from "../../model/login-model";
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from "../../service/auth.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {first} from "rxjs/operators";
+import {UsuarioModel_T} from "../../model/usuario-model";
+import {error} from "@angular/compiler-cli/src/transformers/util";
 
 @Component({
   selector: 'app-login',
@@ -12,8 +13,13 @@ import {first} from "rxjs/operators";
 })
 export class LoginComponent implements OnInit {
 
-   loginModel: LoginModel_T = new LoginModel_T();
+   userModel: UsuarioModel_T = new UsuarioModel_T();
   loginControl = new FormControl();
+
+  errorMessage = 'Invalid Credentials';
+  successMessage!: string;
+  invalidLogin = false;
+  loginSuccess = false;
 
 
   loginForm!: FormGroup;
@@ -21,12 +27,6 @@ export class LoginComponent implements OnInit {
   submitted = false;
   returnUrl: string = '';
 
-
-  // Login simples
-  logar(){
-    console.log(this.loginModel);
-      this.authService.fazerLogin(this.loginModel);
-  }
 
   //login um pouco avançado
   constructor(private authService: AuthService,
@@ -42,6 +42,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  /*
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
@@ -49,8 +50,29 @@ export class LoginComponent implements OnInit {
 
     // obter url de retorno dos parâmetros da rota ou para '/'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+
+   */
   }
 
+
+
+  // Login simples
+  logar1(){
+     this.authService.fazerLogin(this.userModel);
+  }
+
+  logar() {
+    try {
+      this.authService.login(this.userModel).subscribe((resp:UsuarioModel_T) => {
+             alert('Jesus ---> ' + resp.username)
+      });
+    } catch (error) {
+      console.log(error)
+
+    }
+  }
+
+/*
   // getter para o acesso facil aos campos de formulário
   get f() { return this.loginForm.controls; }
 
@@ -77,7 +99,8 @@ export class LoginComponent implements OnInit {
           this.loading = false;
         });
   }
+ */
 
-
+// https://github.com/cc-cobracode/loginapp-frontend/blob/master/src/app/services/AuthService.ts
 
 }

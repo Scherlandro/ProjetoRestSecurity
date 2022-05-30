@@ -1,7 +1,7 @@
 package biontec.biontec.api.controller;
 
 
-import biontec.biontec.api.dtos.LoginDto;
+import biontec.biontec.api.dtos.UsuarioDto;
 import biontec.biontec.api.model.UsuarioModel;
 import biontec.biontec.api.services.LoginServices;
 import biontec.biontec.api.services.UsuarioServices;
@@ -14,8 +14,10 @@ import org.springframework.http.server.DelegatingServerHttpResponse;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.security.auth.spi.LoginModule;
+import javax.servlet.http.HttpServlet;
 import javax.validation.Valid;
 
 
@@ -25,7 +27,8 @@ import javax.validation.Valid;
 public class LoginController {
 
     private UsuarioServices usuarioServices;
-       public LoginController(UsuarioServices usuarioServices) {
+
+    public LoginController(UsuarioServices usuarioServices) {
         this.usuarioServices = usuarioServices;
     }
 
@@ -41,25 +44,37 @@ public class LoginController {
         return null;
     }
 
+    @PostMapping("/logar")
+    public ResponseEntity<Boolean> validarSenha(@RequestBody @Valid UsuarioModel login) {
+      return usuarioServices.validarSenha(login.getName(), login.getPassword());
+      /*
+       public ResponseEntity<Boolean> validarSenha(@RequestParam String login,
+                               @RequestParam String password) {
+      return usuarioServices.validarSenha(login, password);
+       */
 
-    /*
-    @PostMapping("/login")
-    public UsuarioModel login(@RequestBody @Valid LoginDto loginDto) {
-        String nome_usuario = "", senha = "";
-        var loginModel = new UsuarioModel();
-        BeanUtils.copyProperties(loginDto, loginModel);
-        List<UsuarioModel> listUsers = loginServices.LoginServer();
+       /* List<UsuarioModel> listUsers = usuarioServices.UsuarioServer();
         for (UsuarioModel other : listUsers) {
-            if (other.equals(loginModel)) {
-                return other;
-                // return ResponseEntity.status(HttpStatus.OK).body("Seja bem vindo");
+            if (other.getName().equals(login)) {
+                ResponseEntity<Boolean> check = usuarioServices.validarSenha(login, password);
+                if (check.getBody()) {
+                    return "page_usuarios";
+                } else {
+                    return "/";
+                }
             }
         }
-        return null;
-        //return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Registro não encontrado");
+        return "Usuario não cadastrado";
+
+        */
+    }
+    @GetMapping("/logar/{name},{password}")
+    public ResponseEntity<UsuarioModel> authUser(@PathVariable("name")String name,
+                                                 @PathVariable("password")String password) {
+        UsuarioDto usuarioDto = new UsuarioDto();
+        usuarioDto.setNome_usuario(name);
+        usuarioDto.setSenha(password);
+        return usuarioServices.validarUsuario(usuarioDto);
     }
 
-     */
-
-
-    }
+}

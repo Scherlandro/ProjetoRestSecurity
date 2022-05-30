@@ -4,6 +4,7 @@ import biontec.biontec.api.model.ProdutoModel;
 import biontec.biontec.api.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,7 +18,8 @@ public class ProdutoController {
     @Autowired
     private ProdutoRepository repository;
 
-    @GetMapping(path = "/")
+    @PreAuthorize("hasRole('ADMIN')")
+    @GetMapping
     public ResponseEntity<List<ProdutoModel>> listarProdutos(){
         return ResponseEntity.ok(repository.findAll());
     }

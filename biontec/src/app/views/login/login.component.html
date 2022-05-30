@@ -1,14 +1,14 @@
 
     <mat-card >
       <mat-form-field appearance="outline">
-        <input   type="text" placeholder="Digite o usuário" matInput
-                 [(ngModel)]="loginModel.nome_usuario" id="usuario" for="usuario"/>
+        <input type="text" placeholder="Digite o usuário" matInput
+               [(ngModel)]="userModel.username" id="username" name="username" for="username"/>
       </mat-form-field>
       <mat-form-field appearance="outline">
-        <input  type="password" placeholder="Digite a senha" matInput
-                [(ngModel)]="loginModel.senha" id="senha" for="senha"/>
+        <input type="password" placeholder="Digite a senha" matInput
+               [(ngModel)]="userModel.password" id="password" name="password" for="password"/>
       </mat-form-field>
-      <button mat-raised-button color="primary" class="notranslate" (click)="logar()">
+      <button mat-raised-button color="primary" class="notranslate" (click)="logar()" >
         <mat-icon>input</mat-icon>
         {{'Login'}}
       </button>

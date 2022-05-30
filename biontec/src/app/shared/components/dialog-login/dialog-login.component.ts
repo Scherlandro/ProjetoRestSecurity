@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {LoginModel_T} from "../../../model/login-model";
+import {UsuarioModel_T} from "../../../model/usuario-model";
 
 @Component({
   selector: 'app-dialog-login',
@@ -12,7 +12,7 @@ export class DialogLoginComponent implements OnInit {
 
   constructor(
     @Inject(MAT_DIALOG_DATA)
-    public dataLogin: LoginModel_T,
+    public dataLogin: UsuarioModel_T,
     public dialogRef: MatDialogRef<DialogLoginComponent>,
   ) {}
 

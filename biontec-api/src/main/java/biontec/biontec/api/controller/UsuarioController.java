@@ -1,23 +1,20 @@
 package biontec.biontec.api.controller;
 
-import biontec.biontec.api.dtos.CreateUserRoleDto;
+import biontec.biontec.api.dtos.RoleUserDto;
 import biontec.biontec.api.dtos.UsuarioDto;
+import biontec.biontec.api.model.RoleModel;
 import biontec.biontec.api.model.UsuarioModel;
-import biontec.biontec.api.repository.UsuarioRepository;
-import biontec.biontec.api.repository.customRep.UserCustomRepository;
-import biontec.biontec.api.services.CreateRoleUserService;
+import biontec.biontec.api.services.RoleUserService;
 import biontec.biontec.api.services.UsuarioServices;
 import lombok.var;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -29,7 +26,7 @@ public class UsuarioController {
     private UsuarioServices usuarioServices;
 
     @Autowired
-    CreateRoleUserService createRoleUserService;
+    RoleUserService roleUserService;
 
 
     @GetMapping(path = "/")
@@ -38,7 +35,7 @@ public class UsuarioController {
     }
 
     @GetMapping(path = "/{id_usuario}")
-    public ResponseEntity consultar(@PathVariable("id_usuario") UUID id_usuario){
+    public ResponseEntity consultar(@PathVariable("id_usuario") Integer id_usuario){
         return usuarioServices.consultarPorId(id_usuario);
     }
 
@@ -62,21 +59,30 @@ public class UsuarioController {
         return usuarioServices.salvar(usuario);
     }
 
-    @PostMapping(path = "/role")
-    public UsuarioModel role(@RequestBody CreateUserRoleDto createUserRoleDto){
-        return createRoleUserService.execute(createUserRoleDto);
-    }
-
     @PutMapping(path = "/editar")
     public UsuarioModel editar(@RequestBody UsuarioModel usuario){
         return usuarioServices.editar(usuario);
     }
 
     @DeleteMapping(path = "/delete/{id_usuario}")
-    public void excluir(@PathVariable("id_usuario") UUID id_usuario){
+    public void excluir(@PathVariable("id_usuario") Integer id_usuario){
         usuarioServices.excluir(id_usuario);
     }
 
+    @PostMapping(path = "/role")
+    public UsuarioModel role(@RequestBody RoleUserDto roleUserDto){
+        return roleUserService.execute(roleUserDto);
+    }
+
+    @GetMapping(path = "/list-role")
+    public List<RoleModel> listRoles(){
+        return roleUserService.listRoles();
+    }
+
+    @GetMapping(path = "/fetch-role/{username}")
+    public UsuarioModel listFetchRoles(@PathVariable("username")String username){
+        return roleUserService.listFethRoles(username);
+    }
 
 
 }

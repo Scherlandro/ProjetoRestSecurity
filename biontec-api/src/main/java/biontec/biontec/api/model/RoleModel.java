@@ -17,13 +17,13 @@ public class RoleModel {
 
     @Id
     @GeneratedValue
-    private UUID id;
+    private Integer id_role;
 
     @Column(nullable = false, length = 45)
-    private String name;
+    private String name_role;
 
-    public RoleModel(UUID id) {
-        this.id = id;
+    public RoleModel(Integer id_role) {
+        this.id_role = id_role;
     }
 
 }
